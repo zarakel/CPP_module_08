@@ -3,6 +3,12 @@
 # include <iostream>
 # include <string>
 # include <vector>
+# include <time.h>
+
+struct not_enough_arguments : std::exception
+{
+	const char * what() const throw() {return "not enought argument";}
+};
 
 class Span
 {
@@ -13,8 +19,9 @@ class Span
 		Span & operator=( Span const & cp );
 		~Span( void );
 		void	addNumber( int y );
+		void	addLotNumber( void );
 		int		shortestSpan( void );
-		//int		longestSpan ( void );
+		int		longestSpan ( void );
 		std::vector<int> _arr;
 		int index;
 };
