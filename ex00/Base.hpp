@@ -2,30 +2,24 @@
 # define BASE_HPP
 # include <iostream>
 # include <vector>
+# include <list>
 # include <stdexcept>
+# include <exception>
 
 struct Nofind : std::exception
 {
 	const char * what() const throw() {return "Nofind";}
 };
 
-template<typename T>
-T easyFind(std::vector<T> F, int i)
+template< typename T >
+typename T::const_iterator easyFind(T const F, int const i)
 {
-	try {
-		int size = F.size();
-		for (int y = 0 ; y != size; y++)
+		for (typename T::const_iterator zouave = F.begin() ; zouave != F.end(); zouave++)
 		{
-			if(F[y] == i)
-				return (F[y]);
+			if (*zouave == i)
+				return (typename T::const_iterator(zouave));
 		}
-		throw Nofind();
-		}	
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	return (0);
+	throw (Nofind());
 }
 
 #endif
