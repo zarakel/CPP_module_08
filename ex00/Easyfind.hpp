@@ -1,5 +1,5 @@
-#ifndef BASE_HPP
-# define BASE_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 # include <iostream>
 # include <vector>
 # include <list>
@@ -8,7 +8,7 @@
 
 struct Nofind : std::exception
 {
-	const char * what() const throw() {return "Nofind";}
+	const char * what() const throw() {return "Nofind\n";}
 };
 
 template< typename T >
